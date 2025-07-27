@@ -13,7 +13,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = posts::latest()->paginate(10);
+        $posts = posts::withTrashed()->latest()->paginate(10);
 
         return response()->json($posts);
     }
