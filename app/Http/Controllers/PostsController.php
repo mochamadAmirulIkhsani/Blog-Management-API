@@ -18,6 +18,24 @@ class PostsController extends Controller
         return response()->json($posts);
     }
 
+    public function listForPublic()
+    {
+        $posts = posts::where('status', 'publish')->latest()->paginate(10);
+
+        return response()->json($posts);
+    }
+
+    public function showDetailedSlug($slug){
+
+        $post = posts::where('slug', $slug)->first();
+
+        if (!$post) {
+            return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        return response()->json($post);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
