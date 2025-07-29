@@ -1,0 +1,811 @@
+{
+	"info": {
+		"_postman_id": "7cf99480-a283-4f02-9cd9-4ef88506d142",
+		"name": "Blog Management API",
+		"description": "Dokumentasi PR Challenge Internship Rapier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39740222"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Mochamad Amirul Ikhsani",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin12345",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "admin12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/register",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin12345",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3MzUzLCJleHAiOjE3NTM3NTA5NTMsIm5iZiI6MTc1Mzc0NzM1MywianRpIjoiSEk4ZGRIQktxZktMNXJIMSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.La_VM-eswraxiEPvxi-nEG7RaHGy-6o_rl7H4coBKy0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNjM4ODg4LCJleHAiOjE3NTM2NDI0ODgsIm5iZiI6MTc1MzYzODg4OCwianRpIjoiQnBwVkp1VkVxeTMyZHBFRSIsInN1YiI6IjExIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.iqkMTcNwYv0Wzo85gM0UiUXGOn-iTRMUGNmZvZvLQVc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/logout",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get All Post Data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/posts/admin",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Posts",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Final Test 2",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "final test 2",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "ini test 2",
+											"type": "text"
+										},
+										{
+											"key": "thumbnail",
+											"type": "file",
+											"src": "postman-cloud:///1efe9618-41c9-4560-9257-993160dedaf3"
+										},
+										{
+											"key": "status",
+											"value": "publish",
+											"type": "text"
+										},
+										{
+											"key": "meta_title",
+											"value": "FINAL TEST 2",
+											"type": "text"
+										},
+										{
+											"key": "meta_description",
+											"value": "FINAL TEST 2",
+											"type": "text"
+										},
+										{
+											"key": "tags[0]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "tags[1]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/posts",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Data by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Test Final Update",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "Test Final Update",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "Test Final Update",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "publish",
+											"type": "text"
+										},
+										{
+											"key": "tags[0]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "tags[1]",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/posts/1",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Post by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/posts/1",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get data for Public",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/posts",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get detail post by Slug",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/posts/final test 2",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"posts",
+										"final test 2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Create Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ2Mzc4LCJleHAiOjE3NTM3NDk5NzgsIm5iZiI6MTc1Mzc0NjM3OCwianRpIjoieXhoQ1BlMDBzc1dkWHgyWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4AsR8qm2PZDrec1DrtOeQgRTLleEWcApb29dE8dZMWI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Final Test 2",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "final test 2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/categories",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Categories Data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ2Mzc4LCJleHAiOjE3NTM3NDk5NzgsIm5iZiI6MTc1Mzc0NjM3OCwianRpIjoieXhoQ1BlMDBzc1dkWHgyWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4AsR8qm2PZDrec1DrtOeQgRTLleEWcApb29dE8dZMWI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/categories/admin",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"categories",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Post by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/categories/1",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Data by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ2Mzc4LCJleHAiOjE3NTM3NDk5NzgsIm5iZiI6MTc1Mzc0NjM3OCwianRpIjoieXhoQ1BlMDBzc1dkWHgyWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4AsR8qm2PZDrec1DrtOeQgRTLleEWcApb29dE8dZMWI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Laravel Final cat",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "laravel final cat",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/categories/1",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"categories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get Active Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/categories",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Create Tag",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Final Test Api",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "final test api",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/tags?name=test&slug=testtest",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"tags"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "test"
+										},
+										{
+											"key": "slug",
+											"value": "testtest"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get  all Tags Data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/tags/admin",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"tags",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tag by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ2Mzc4LCJleHAiOjE3NTM3NDk5NzgsIm5iZiI6MTc1Mzc0NjM3OCwianRpIjoieXhoQ1BlMDBzc1dkWHgyWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.4AsR8qm2PZDrec1DrtOeQgRTLleEWcApb29dE8dZMWI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/tags/3",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"tags",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Data by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Final Test Api Update",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "final test api update",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}api/tags/2",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"tags",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get Active Tags",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/tags",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"tags"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Post Activity",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get Activity Statistics",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzUzNzQ3NDg5LCJleHAiOjE3NTM3NTEwODksIm5iZiI6MTc1Mzc0NzQ4OSwianRpIjoidjJJYnNqU2dvdENTTXVqNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.63Cx4cTlMnxRhw52JXRRg1SYx_92gWKUU5BkcPRMG4M",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/post-activities/2",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"post-activities",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Create activity (?)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}api/post-activities?post_id=2",
+									"host": [
+										"{{url}}api"
+									],
+									"path": [
+										"post-activities"
+									],
+									"query": [
+										{
+											"key": "post_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
