@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +11,7 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class posts extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     protected $fillable = [
         'title',
@@ -33,8 +35,15 @@ class posts extends Model
         return $this->belongsTo(categories::class);
     }
 
-    public function posts()
+    public function tags()
     {
-        return $this->hasMany(posts::class);
+        return $this->belongsToMany(tags::class, 'posts_tags', 'posts_id', 'tag_id');
+    }
+
+    public function thumbnail(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/' . $image),
+        );
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\PostActivityController;
 
 /* Authentication Routes */
 
@@ -17,6 +18,7 @@ Route::post('/logout', LogoutController::class);
 
 // Admin Routes
 Route::group(['middleware' => ['jwt.auth', 'role:admin']], function () {
+
     // Posts Routes
     Route::post('/posts', [PostsController::class, 'store']);
     Route::put('/posts/{id}', [PostsController::class, 'update']);
@@ -34,17 +36,25 @@ Route::group(['middleware' => ['jwt.auth', 'role:admin']], function () {
     Route::put('/tags/{id}', TagsController::class . '@update');
     Route::delete('/tags/{id}', TagsController::class . '@destroy');
     Route::get('/tags/admin', TagsController::class . '@index');
+
+    // Post Activities Routes
+    Route::get('/post-activities/{postId}', [PostActivityController::class, 'index']);
 });
 
 
 // Public Routes
+Route::group([],  function () {
 
-// Posts Routes
-Route::get('/posts', [PostsController::class, 'listForPublic']);
-Route::get('/posts/{slug}', [PostsController::class, 'showDetailedSlug']);
+    // Posts Routes
+    Route::get('/posts', [PostsController::class, 'listForPublic']);
+    Route::get('/posts/{slug}', [PostsController::class, 'showDetailedSlug']);
 
-// Categories Routes
-Route::get('/categories', CategoriesController::class . '@getActiveCategories');
+    // Categories Routes
+    Route::get('/categories', CategoriesController::class . '@getActiveCategories');
 
-// Tags Routes
-Route::get('/tags', TagsController::class . '@getActiveTags');
+    // Tags Routes
+    Route::get('/tags', TagsController::class . '@getActiveTags');
+
+    // Route activity
+    Route::post('/post-activities', [PostActivityController::class, 'store']);
+});

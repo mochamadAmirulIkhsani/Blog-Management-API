@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class tags extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     protected $fillable = [
         'name',
         'slug',
     ];
 
-    public function postTag()
+    public function posts()
     {
-        return $this->hasMany(post_tag::class);
+        return $this->belongsToMany(posts::class, 'posts_tags', 'tag_id', 'posts_id');
     }
 }
